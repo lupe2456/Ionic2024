@@ -1,0 +1,15 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="new-background-color">
+
+    <ion-buttons slot="start">
+
+        <ion-back-button *ngIf="backButton" [defaultHref]="backButton">
+
+        </ion-back-button>
+
+      <ion-menu-button *ngIf="showMenu" menu="menu-content"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>

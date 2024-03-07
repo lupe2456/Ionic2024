@@ -1,0 +1,85 @@
+<app-header [showMenu]="true" title="Inicio"></app-header>
+
+<ion-content>
+  <ion-grid>
+    <!-- Calendario -->
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <ion-card>
+          <div class="calendar">
+            <!-- Aquí iría la representación visual del calendario -->
+            <h2>Calendario de Actividades del Semestre</h2>
+            <h3>ENERO - JULIO 2024</h3>
+            <ion-img src="/assets/imagenes/calendar.jpg"></ion-img>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <!-- columna 2 -->
+      <ion-col size="12" size-sm="6" size-md="4"> 
+        <ion-card>
+          <div class="calendar">
+            
+            <h3>MARZO 
+              <ion-fab horizontal="end" slot="fixed">
+                <ion-fab-button>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </h3>
+            <ion-img src="/assets/imagenes/marzo.jpg"></ion-img>
+          </div>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <!-- Notas -->
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <div class="notes">
+          <ion-input type="text" placeholder="Agregar una nota"></ion-input>
+          <ion-button expand="block" color="primary">Guardar</ion-button>
+          <!-- Aquí podrían listarse las notas guardadas -->
+          <p>Notas:</p>
+          <ul>
+            <li>Ejemplo de nota 1</li>
+            <li>Ejemplo de nota 2</li>
+          </ul>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botones flotantes -->
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="apps-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary">
+        <ion-icon name="share"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
+    <ion-fab-list side="end">
+      <ion-fab-button color="dark" routerLink="/log-password">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer class="d-flex-center">
+    <p>Esmeralda Guadalupe Zambrano Rodriguez</p>
+</ion-footer>
