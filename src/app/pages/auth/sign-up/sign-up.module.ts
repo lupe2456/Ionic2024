@@ -15,7 +15,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     SignUpPageRoutingModule,
-    SharedModule
+    SharedModule // se importa para integrar los componentes como header, logo, input,...
   ],
   declarations: [SignUpPage]
 })
