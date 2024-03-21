@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>ejercicios</ion-title>
   </ion-toolbar>
@@ -19,4 +19,40 @@
 
   <ion-datetime presentation="date" value="2024-01-01" [highlightedDates]="highlightedDates"
     ></ion-datetime>
+</ion-content> -->
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ejercicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment>
+    <ion-segment-button value="schedule">Schedule
+    </ion-segment-button>
+
+    <ion-segment-button value="tasks">Tasks
+    </ion-segment-button>
+
+    <ion-segment-button value="notes">Notes
+    </ion-segment-button>
+
+  </ion-segment>
+
+  <ion-card>
+    <ion-datetime presentation="date" [highlightedDates]="highlightedDates2" [(ngModel)]="selectedDate">
+    </ion-datetime>
+
+  </ion-card>
+
+
+  <!-- <ion-datetime presentation="date" (ionChange)="onDateChange($event)" [highlightedDates]="highlightedDates"
+    [(ngModel)]="selectedDate"></ion-datetime> -->
+
+    <ion-card class="d-flex-center">
+        <ion-datetime presentation="date" [highlightedDates]="highlightedDates1"></ion-datetime>
+    </ion-card>
+
 </ion-content>
