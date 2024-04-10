@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { EjerciciosPageRoutingModule } from './ejercicios-routing.module';
+import { ViewTasksPageRoutingModule } from './view-tasks-routing.module';
 
-import { EjerciciosPage } from './ejercicios.page';
+import { ViewTasksPage } from './view-tasks.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    EjerciciosPageRoutingModule
+    ViewTasksPageRoutingModule
   ],
-  declarations: [EjerciciosPage]
+  declarations: [ViewTasksPage]
 })
-export class EjerciciosPageModule {}
+export class ViewTasksPageModule {}

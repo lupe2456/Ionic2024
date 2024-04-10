@@ -1,0 +1,24 @@
+ion-datetime {
+  color: black;
+  margin: 0 auto;
+}
+
+ion-datetime::part(calendar-day) {
+  color: black;
+}
+
+ion-datetime::part(calendar-day):focus {
+  background-color: rgba(154, 209, 98, 0.2);
+  box-shadow: 0px 0px 0px 4px rgba(154, 209, 98, 0.2);
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.header-home {
+  margin: 0 auto;
+  text-align: center;
+}/*# sourceMappingURL=home.page.css.map */

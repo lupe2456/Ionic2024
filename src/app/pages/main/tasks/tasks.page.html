@@ -1,0 +1,141 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar tareas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content">
+
+  <ion-grid fixed>
+    <ion-card class="ion-padding">
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input labelPlacement="floating">
+              <div slot="label">Titulo <ion-text color="primary"></ion-text></div>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input labelPlacement="floating">
+              <div slot="label">Descripción <ion-text color="primary"></ion-text></div>
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="ion-padding">
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Todo el día</ion-label>
+            <ion-checkbox slot="end"></ion-checkbox>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Fecha de inicio</ion-label>
+            <ion-input type="date" placeholder="Seleccione la fecha de inicio"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Hora de inicio</ion-label>
+            <ion-input type="time" placeholder="Seleccione la hora de inicio"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Fecha de fin</ion-label>
+            <ion-input type="date" placeholder="Seleccione la fecha de fin"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Hora de fin</ion-label>
+            <ion-input type="time" placeholder="Seleccione la hora de fin"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+
+    <ion-card class="ion-padding">
+      <ion-row>
+        <ion-col size="12"></ion-col>
+        <ion-label>Seleccionar color</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #2ecc71" (click)="selectColor('#2ecc71')"
+            [ngClass]="{'selected': selectedColor === '#2ecc71'}"></div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #ff9f43" (click)="selectColor('#ff9f43')"
+            [ngClass]="{'selected': selectedColor === '#ff9f43'}"></div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #9b59b6" (click)="selectColor('#9b59b6')"
+            [ngClass]="{'selected': selectedColor === '#9b59b6'}"></div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #f1c40f" (click)="selectColor('#f1c40f')"
+            [ngClass]="{'selected': selectedColor === '#f1c40f'}"></div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #ff6b81" (click)="selectColor('#ff6b81')"
+            [ngClass]="{'selected': selectedColor === '#ff6b81'}"></div>
+        </ion-col>
+        <ion-col size="2">
+          <div class="circle" style="background-color: #00b894" (click)="selectColor('#00b894')"
+            [ngClass]="{'selected': selectedColor === '#00b894'}"></div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="ion-padding">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-input type="text" placeholder="Dirección URL"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="stacked">Notas</ion-label>
+            <ion-textarea rows="6" placeholder="Escribe algo aquí"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" routerLink="../home">Cancelar</ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="success" (click)="agregarTarea()">Agregar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

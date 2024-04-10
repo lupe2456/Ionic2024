@@ -1,0 +1,21 @@
+.content{
+    ion-label, div{
+        color:#000000e5;
+    }
+}
+
+// Definir el tamaño y el color del círculo
+$circle-size: 30px;
+
+// Estilos para el círculo
+.circle {
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 50%; // Hace que el cuadrado se convierta en un círculo
+    margin: 5px; /* Ajusta el margen entre los botones según sea necesario */
+    cursor: pointer;
+}
+
+  .circle.selected {
+    border: 2px solid black; /* Cambiar el borde para resaltar el botón seleccionado */
+  }

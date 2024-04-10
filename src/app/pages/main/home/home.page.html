@@ -16,15 +16,11 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2">
         <ion-segment>
-          <ion-segment-button value="schedule">Schedule
+          <ion-segment-button value="tasks" routerLink="../view-tasks">Tareas
           </ion-segment-button>
 
-          <ion-segment-button value="tasks">Tasks
+          <ion-segment-button value="notes" routerLink="../notes">Notas
           </ion-segment-button>
-
-          <ion-segment-button value="notes">Notes
-          </ion-segment-button>
-
         </ion-segment>
 
         <ion-datetime presentation="date" [highlightedDates]="highlightedDates">
@@ -35,6 +31,7 @@
 
     <ion-row>
       <ion-col size-md="8" offset-md="2">
+        <h2>Colorimetría</h2>
         <div>
           <ion-row>
             <ion-col size="2">
@@ -110,26 +107,10 @@
       </ion-col>
     </ion-row>
 
-
-    <!-- Notas -->
-    <ion-row>
-      <ion-col size-md="8" offset-md="2">
-        <div class="notes">
-          <ion-input type="text" placeholder="Agregar una nota"></ion-input>
-          <ion-button expand="block" color="primary">Guardar</ion-button>
-          <!-- Aquí podrían listarse las notas guardadas -->
-          <p>Notas:</p>
-          <ul>
-            <li>Ejemplo de nota 1</li>
-            <li>Ejemplo de nota 2</li>
-          </ul>
-        </div>
-      </ion-col>
-    </ion-row>
   </ion-grid>
 
   <!-- Botones flotantes -->
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button>
       <ion-icon name="apps-outline"></ion-icon>
     </ion-fab-button>
@@ -151,7 +132,7 @@
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> -->
 
 </ion-content>
 

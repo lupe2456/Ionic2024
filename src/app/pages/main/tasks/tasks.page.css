@@ -1,0 +1,16 @@
+@charset "UTF-8";
+.content ion-label, .content div {
+  color: rgba(0, 0, 0, 0.5843137255);
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 5px; /* Ajusta el margen entre los botones según sea necesario */
+  cursor: pointer;
+}
+
+.circle.selected {
+  border: 2px solid black; /* Cambiar el borde para resaltar el botón seleccionado */
+}/*# sourceMappingURL=tasks.page.css.map */
