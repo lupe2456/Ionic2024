@@ -6,6 +6,9 @@ import { User } from '../models/user.model';
 import { addDoc, collection, deleteDoc, doc, getDoc, getFirestore, setDoc, updateDoc } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadString } from 'firebase/storage';
+import { Observable } from 'rxjs';
+
+const {v4: uuidv4} = require('uuid');
 
 @Injectable({
   providedIn: 'root'
@@ -63,10 +66,15 @@ export class FirebaseService {
     });
   }
 
-  getCollectionData(path: any): AngularFirestoreCollection<User> {
-    this.dataRef = this.firestore.collection(path, ref => ref.orderBy('name', 'asc'));
-    return this.dataRef;
-  }
+  // getCollectionData(path: any): AngularFirestoreCollection<User> {
+  //   this.dataRef = this.firestore.collection(path, ref => ref.orderBy('name', 'asc'));
+  //   return this.dataRef;
+  // }
+
+  getCollectionChanges<T>(path: string): Observable<T[]> { // Declara el método getCollectionChanges
+    const refCollection: AngularFirestoreCollection<T> = this.firestore.collection<T>(path); // Obtiene la colección de Firestore
+    return refCollection.valueChanges(); // Devuelve los cambios en la colección
+  }
 
   //obtener ruta de la imagen con su url
   async getFilePath(url: string){
@@ -85,6 +93,10 @@ export class FirebaseService {
   //eliminar fotografía
   deleteFile(path: any){
     return deleteObject(ref(getStorage(), path));
+  }
+
+  createIdDoc(){
+    return uuidv4();
   }
 
 }

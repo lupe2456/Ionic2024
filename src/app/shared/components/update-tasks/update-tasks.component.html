@@ -2,22 +2,23 @@
 
 <ion-content class="content">
 
-  <!-- APARTADO REAL ---------------------------------------- -->
   <form [formGroup]="form1" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
     <ion-grid fixed>
       <ion-card class="ion-padding">
         <ion-item>
-          <ion-input labelPlacement="floating" autocomplete="title" label="Titulo" type="text" [formControl]="form1.controls.title"></ion-input>
-            <div class="validators" *ngIf="form1.controls.title.errors && form1.controls.title.touched">
-              <div *ngIf="form1.controls.title.errors?.['required']">El titulo es requerido</div>
-            </div>
+          <ion-input labelPlacement="floating" label="Titulo" type="text"
+            [formControl]="form1.controls.title"></ion-input>
+          <div class="validators" *ngIf="form1.controls.title.errors && form1.controls.title.touched">
+            <div *ngIf="form1.controls.title.errors?.['required']">El titulo es requerido</div>
+          </div>
         </ion-item>
- 
+
         <ion-item>
-          <ion-input labelPlacement="floating" autocomplete="description" label="Descripción" type="text" [formControl]="form1.controls.description"></ion-input>
-            <div class="validators" *ngIf="form1.controls.description.errors && form1.controls.description.touched">
-              <div *ngIf="form1.controls.description.errors?.['required']">La descripción es requerida</div>
-            </div>
+          <ion-input labelPlacement="floating" label="Descripción" type="text"
+            [formControl]="form1.controls.description"></ion-input>
+          <div class="validators" *ngIf="form1.controls.description.errors && form1.controls.description.touched">
+            <div *ngIf="form1.controls.description.errors?.['required']">La descripción es requerida</div>
+          </div>
         </ion-item>
       </ion-card>
 
@@ -26,20 +27,22 @@
 
         <ion-item>
           <ion-label>Todo el día</ion-label>
-          <ion-checkbox slot="end"></ion-checkbox>
-         </ion-item>
+          <ion-checkbox [formControl]="form1.controls.all_day" slot="end"></ion-checkbox>
+        </ion-item>
 
         <ion-row>
           <ion-col size="6">
             <ion-item>
               <ion-label position="floating">Fecha inicio</ion-label>
-              <ion-input type="date" placeholder="Seleccione la fecha de inicio"></ion-input>
+              <ion-input [formControl]="form1.controls.start_date" type="date"
+                placeholder="Seleccione la fecha de inicio"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col size="6">
             <ion-item>
               <ion-label position="floating">Hora inicio</ion-label>
-              <ion-input type="time" placeholder="Seleccione la hora de inicio"></ion-input>
+              <ion-input [formControl]="form1.controls.start_time" type="time"
+                placeholder="Seleccione la hora de inicio"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -49,18 +52,20 @@
           <ion-col size="6">
             <ion-item>
               <ion-label position="floating">Fecha fin</ion-label>
-              <ion-input type="date" placeholder="Seleccione la fecha de fin"></ion-input>
+              <ion-input [formControl]="form1.controls.end_date" type="date"
+                placeholder="Seleccione la fecha de fin"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col size="6">
             <ion-item>
               <ion-label position="floating">Hora fin</ion-label>
-              <ion-input type="time" placeholder="Seleccione la hora de fin"></ion-input>
+              <ion-input [formControl]="form1.controls.end_time" type="time"
+                placeholder="Seleccione la hora de fin"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
-
       </ion-card>
+
 
       <ion-card class="ion-padding">
         <ion-row>
@@ -96,75 +101,25 @@
       </ion-card>
 
       <ion-card class="ion-padding">
-      
-            <ion-item>
-              <ion-input type="text" placeholder="Dirección URL"></ion-input>
-            </ion-item>
-          
-            <ion-item>
-              <ion-label position="stacked">Notas</ion-label>
-              <ion-textarea rows="6" placeholder="Escribe algo aquí"></ion-textarea>
-            </ion-item>
-          
+
+        <ion-item>
+          <ion-input labelPlacement="floating" label="Dirección URL" type="text"
+            [formControl]="form1.controls.url"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Notas</ion-label>
+          <ion-textarea rows="6" labelPlacement="floating" type="text" [formControl]="form1.controls.notes"
+            placeholder="Escribe algo aquí"></ion-textarea>
+        </ion-item>
+
       </ion-card>
 
-      <!-- <ion-row>
-        <ion-col size="6">
-          <ion-button expand="block" color="danger" routerLink="../home" mode="ios">Cancelar</ion-button>
-        </ion-col>
-        <ion-col size="6"> -->
-          <!-- (click)="agregarTarea()"  -->
-          <ion-button expand="block" color="success" type="submit" mode="ios" [disabled]="form1.invalid">
-            {{ task ? 'Actualizar tarea': 'Agregar tarea' }}
-          </ion-button>
-        <!-- </ion-col>
-      </ion-row> -->
+      <ion-button expand="block" color="success" type="submit" mode="ios" [disabled]="form1.invalid">
+        {{ task ? 'Actualizar tarea': 'Agregar tarea' }}
+      </ion-button>
 
     </ion-grid>
   </form>
-  <!-- APARTADO REAL ---------------------------------------- -->
-
-
-
-
-  <!-- APARTADO DE PRUEBA ---------------------------------------- -->
-
-
-  <!-- <form [formGroup]="form" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
-    <app-login-input autocomplete="name" type="text" label="Nombre" [control]="form.controls.name"></app-login-input>
-
-    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
-      <div *ngIf="form.controls.name.errors?.['required']">El nombre es requerido</div>
-    </div>
-
-    <app-login-input autocomplete="salario" type="number" label="Salario" [control]="form.controls.salario"
-      (ionInput)="setNumberInput()"></app-login-input>
-
-    <div class="validators" *ngIf="form.controls.salario.errors && form.controls.salario.touched">
-      <div *ngIf="form.controls.salario.errors?.['required']">El salario es requerido</div>
-      <div *ngIf="form.controls.salario.errors?.['min']">El salario mínimo es 0</div>
-    </div>
-
-    <app-login-input autocomplete="cargo" type="text" label="Cargo" [control]="form.controls.cargo"></app-login-input>
-
-    <div class="validators" *ngIf="form.controls.cargo.errors && form.controls.cargo.touched">
-      <div *ngIf="form.controls.cargo.errors?.['required']">El cargo es requerido</div>
-    </div>
-
-    <app-login-input autocomplete="plantel" type="text" label="Plantel"
-      [control]="form.controls.plantel"></app-login-input>
-
-    <div class="validators" *ngIf="form.controls.plantel.errors && form.controls.plantel.touched">
-      <div *ngIf="form.controls.plantel.errors?.['required']">El plantel es requerido</div>
-    </div>
-
-    <ion-button class="submit" type="submit" mode="ios" [disabled]="form.invalid">
-      {{ task ? 'Actualizar empleado': 'Agregar empleado' }}
-      <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
-    </ion-button>
-
-  </form> -->
-
-
 
 </ion-content>
