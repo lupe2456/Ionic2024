@@ -1,0 +1,170 @@
+<app-header [isModal]="true" [title]="task ? 'Actualizar tarea': 'Agregar tarea'"></app-header>
+
+<ion-content class="content">
+
+  <!-- APARTADO REAL ---------------------------------------- -->
+  <form [formGroup]="form1" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
+    <ion-grid fixed>
+      <ion-card class="ion-padding">
+        <ion-item>
+          <ion-input labelPlacement="floating" autocomplete="title" label="Titulo" type="text" [formControl]="form1.controls.title"></ion-input>
+            <div class="validators" *ngIf="form1.controls.title.errors && form1.controls.title.touched">
+              <div *ngIf="form1.controls.title.errors?.['required']">El titulo es requerido</div>
+            </div>
+        </ion-item>
+ 
+        <ion-item>
+          <ion-input labelPlacement="floating" autocomplete="description" label="Descripción" type="text" [formControl]="form1.controls.description"></ion-input>
+            <div class="validators" *ngIf="form1.controls.description.errors && form1.controls.description.touched">
+              <div *ngIf="form1.controls.description.errors?.['required']">La descripción es requerida</div>
+            </div>
+        </ion-item>
+      </ion-card>
+
+
+      <ion-card class="ion-padding">
+
+        <ion-item>
+          <ion-label>Todo el día</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+         </ion-item>
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Fecha inicio</ion-label>
+              <ion-input type="date" placeholder="Seleccione la fecha de inicio"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Hora inicio</ion-label>
+              <ion-input type="time" placeholder="Seleccione la hora de inicio"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Fecha fin</ion-label>
+              <ion-input type="date" placeholder="Seleccione la fecha de fin"></ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Hora fin</ion-label>
+              <ion-input type="time" placeholder="Seleccione la hora de fin"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+
+      <ion-card class="ion-padding">
+        <ion-row>
+          <ion-col size="12"></ion-col>
+          <ion-label>Seleccionar color</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #2ecc71" (click)="selectColor('#2ecc71')"
+              [ngClass]="{'selected': selectedColor === '#2ecc71'}"></div>
+          </ion-col>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #ff9f43" (click)="selectColor('#ff9f43')"
+              [ngClass]="{'selected': selectedColor === '#ff9f43'}"></div>
+          </ion-col>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #9b59b6" (click)="selectColor('#9b59b6')"
+              [ngClass]="{'selected': selectedColor === '#9b59b6'}"></div>
+          </ion-col>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #f1c40f" (click)="selectColor('#f1c40f')"
+              [ngClass]="{'selected': selectedColor === '#f1c40f'}"></div>
+          </ion-col>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #ff6b81" (click)="selectColor('#ff6b81')"
+              [ngClass]="{'selected': selectedColor === '#ff6b81'}"></div>
+          </ion-col>
+          <ion-col size="2">
+            <div class="circle" style="background-color: #00b894" (click)="selectColor('#00b894')"
+              [ngClass]="{'selected': selectedColor === '#00b894'}"></div>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card class="ion-padding">
+      
+            <ion-item>
+              <ion-input type="text" placeholder="Dirección URL"></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label position="stacked">Notas</ion-label>
+              <ion-textarea rows="6" placeholder="Escribe algo aquí"></ion-textarea>
+            </ion-item>
+          
+      </ion-card>
+
+      <!-- <ion-row>
+        <ion-col size="6">
+          <ion-button expand="block" color="danger" routerLink="../home" mode="ios">Cancelar</ion-button>
+        </ion-col>
+        <ion-col size="6"> -->
+          <!-- (click)="agregarTarea()"  -->
+          <ion-button expand="block" color="success" type="submit" mode="ios" [disabled]="form1.invalid">
+            {{ task ? 'Actualizar tarea': 'Agregar tarea' }}
+          </ion-button>
+        <!-- </ion-col>
+      </ion-row> -->
+
+    </ion-grid>
+  </form>
+  <!-- APARTADO REAL ---------------------------------------- -->
+
+
+
+
+  <!-- APARTADO DE PRUEBA ---------------------------------------- -->
+
+
+  <!-- <form [formGroup]="form" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
+    <app-login-input autocomplete="name" type="text" label="Nombre" [control]="form.controls.name"></app-login-input>
+
+    <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched">
+      <div *ngIf="form.controls.name.errors?.['required']">El nombre es requerido</div>
+    </div>
+
+    <app-login-input autocomplete="salario" type="number" label="Salario" [control]="form.controls.salario"
+      (ionInput)="setNumberInput()"></app-login-input>
+
+    <div class="validators" *ngIf="form.controls.salario.errors && form.controls.salario.touched">
+      <div *ngIf="form.controls.salario.errors?.['required']">El salario es requerido</div>
+      <div *ngIf="form.controls.salario.errors?.['min']">El salario mínimo es 0</div>
+    </div>
+
+    <app-login-input autocomplete="cargo" type="text" label="Cargo" [control]="form.controls.cargo"></app-login-input>
+
+    <div class="validators" *ngIf="form.controls.cargo.errors && form.controls.cargo.touched">
+      <div *ngIf="form.controls.cargo.errors?.['required']">El cargo es requerido</div>
+    </div>
+
+    <app-login-input autocomplete="plantel" type="text" label="Plantel"
+      [control]="form.controls.plantel"></app-login-input>
+
+    <div class="validators" *ngIf="form.controls.plantel.errors && form.controls.plantel.touched">
+      <div *ngIf="form.controls.plantel.errors?.['required']">El plantel es requerido</div>
+    </div>
+
+    <ion-button class="submit" type="submit" mode="ios" [disabled]="form.invalid">
+      {{ task ? 'Actualizar empleado': 'Agregar empleado' }}
+      <ion-icon slot="end" name="checkmark-circle-outline"></ion-icon>
+    </ion-button>
+
+  </form> -->
+
+
+
+</ion-content>

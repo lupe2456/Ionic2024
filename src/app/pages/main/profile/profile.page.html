@@ -3,12 +3,14 @@
 <ion-content class="ion-padding-top ion-text-center">
 
     <ion-avatar>
-        <ion-icon class="empty-icon" name="person-circle-outline"></ion-icon>
+        <img *ngIf="user()?.img" [src]="user()?.img" alt="">
+        <ion-icon *ngIf="!user()?.img" class="empty-icon" name="person-circle-outline"></ion-icon>
     </ion-avatar>
-    <ion-button class="photo-btn" size="small" mode="ios" shape="round">
+    
+    <ion-button class="photo-btn" (click)="takeImage()" size="small" mode="ios" shape="round">
         <ion-icon name="camera-outline"></ion-icon> 
     </ion-button>
 
-    <h4>Esmeralda</h4>
-    <div class="cargo">Director general</div>
+    <h4>{{ user().name }}</h4>
+
 </ion-content>

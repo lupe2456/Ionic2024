@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ViewTasksPageRoutingModule } from './view-tasks-routing.module';
 
 import { ViewTasksPage } from './view-tasks.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewTasksPageRoutingModule
+    ViewTasksPageRoutingModule,
+    SharedModule
   ],
   declarations: [ViewTasksPage]
 })

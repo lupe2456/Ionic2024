@@ -28,12 +28,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./notes/notes.module').then((m) => m.NotesPageModule),
       },
+      {
+        path: 'view-tasks',
+        loadChildren: () => import('./view-tasks/view-tasks.module').then( m => m.ViewTasksPageModule)
+      },
     ],
   },
-  {
-    path: 'view-tasks',
-    loadChildren: () => import('./view-tasks/view-tasks.module').then( m => m.ViewTasksPageModule)
-  },
+  
 ];
 
 @NgModule({

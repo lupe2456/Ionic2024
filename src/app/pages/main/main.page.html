@@ -4,9 +4,11 @@
     <ion-content class="ion-text-center">
 
         <ion-avatar>
-            <ion-icon class="empty-icon" name="person-circle-outline"></ion-icon>
+            <img *ngIf="user()?.img" [src]="user()?.img" alt="">
+            <ion-icon *ngIf="!user()?.img" class="empty-icon" name="person-circle-outline"></ion-icon>
         </ion-avatar>
-        <h4>Esmeralda Guadalupe</h4>
+        
+        <h4> {{ user()?.name }} </h4>
 
         <ion-menu-toggle autoHide="false" *ngFor="let p of pages">
             <ion-item [ngClass]="{'active': currentPath === p.url}" [routerLink]="p.url" routerDirection="root" detail>
@@ -15,6 +17,15 @@
             </ion-item>
         </ion-menu-toggle>
     </ion-content>
+
+    <ion-footer class="ion-no-border safe-p-bottom">
+        <ion-toolbar auto-hide="false">
+            <ion-item (click)="signOut()" lines="none">
+                <ion-icon slot="start" name="log-out-outline"></ion-icon>
+                <ion-label>Cerrar Sesión</ion-label>
+            </ion-item>
+        </ion-toolbar>
+    </ion-footer>
 
 </ion-menu>
 

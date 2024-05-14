@@ -8,6 +8,22 @@
 
       <app-logo></app-logo>
 
+
+      <app-login-input 
+        autocomplete="name" 
+        type="text" 
+        label="Nombre" 
+        icon="person-outline"
+        [control]="form.controls.name"
+        >
+      </app-login-input>
+
+      <div class="validators" *ngIf="form.controls.name.errors && form.controls.name.touched"> 
+        <div *ngIf="form.controls.name.errors?.['required']">El nombre es requerido</div>
+        <div *ngIf="form.controls.name.errors?.['minLenght']">Ingrese un nombre mayor a 3 caracteres</div>
+      </div>
+
+
       <app-login-input 
         autocomplete="email" 
         type="email" 
