@@ -1,0 +1,15 @@
+.circle {
+    width: 40px;       /* Ajusta el tamaño según sea necesario */
+    height: 40px;      /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%; /* Hace que el div sea un círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-avatar {
+    width: 40px;  /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    margin-right: 10px; /* Espacio entre el avatar y el contenido */
+}
+  

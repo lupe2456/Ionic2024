@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginInputComponent } from './components/login-input/login-input.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { UpdateEmployeeComponent } from './components/update-tasks/update-tasks.component';
+import { UpdateTaskComponent } from './components/update-tasks/update-tasks.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TasksFilterComponent } from './components/tasks-filter/tasks-filter.component';
 
 
 
@@ -14,16 +15,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     LoginInputComponent,
     LogoComponent,
-    UpdateEmployeeComponent
+    UpdateTaskComponent,
+    TasksFilterComponent
   ],
   exports:[
     HeaderComponent,
     LoginInputComponent,
     LogoComponent,
-    UpdateEmployeeComponent,
+    UpdateTaskComponent,
     FormsModule,
     ReactiveFormsModule,
-    
+    TasksFilterComponent
   ],
   imports: [
     CommonModule,

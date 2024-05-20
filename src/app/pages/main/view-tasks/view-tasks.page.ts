@@ -1,10 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { map } from 'rxjs';
 import { Tasks } from 'src/app/models/tasks.model';
 import { User } from 'src/app/models/user.model';
 import { FirebaseService } from 'src/app/serivices/firebase.service';
 import { UtilsService } from 'src/app/serivices/utils.service';
-import { UpdateEmployeeComponent } from 'src/app/shared/components/update-tasks/update-tasks.component';
+import { UpdateTaskComponent } from 'src/app/shared/components/update-tasks/update-tasks.component';
 
 @Component({
   selector: 'app-view-tasks',
@@ -23,7 +22,6 @@ export class ViewTasksPage implements OnInit {
   
   ionViewWillEnter(){
     this.getTask();
-    console.log("ENtre: ");
   }
 
 
@@ -31,7 +29,7 @@ export class ViewTasksPage implements OnInit {
     console.log(task);
     
     let modal = await this.utilsService.getModal({
-      component: UpdateEmployeeComponent,// update-task
+      component: UpdateTaskComponent,
       cssClass: 'add-update-modal',
       componentProps: { task }
     });
@@ -50,15 +48,13 @@ export class ViewTasksPage implements OnInit {
 
     let sub = this.firebaseService.getCollectionChanges(path)
     .subscribe({
-        next: (resp: any) => {
-          console.log(resp);
-          
-          this.tasks = resp; // muestra los empleados
+        next: (resp: any) => {          
+          this.tasks = resp; // muestra las tareas
 
           this.loading = false; //para que deje de cargar
           sub.unsubscribe();
         }
-      })
+      });
   }
 
   doRefresh(event: any){

@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, AlertOptions, LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class UtilsService {
   loadingCtrl = inject(LoadingController);
   modalCtrl = inject(ModalController);
   alertCtrl = inject(AlertController);
+  afAuth = inject(AngularFireAuth);
 
   routerlink(url: any) {
     this.router.navigateByUrl(url);

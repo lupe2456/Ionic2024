@@ -12,13 +12,14 @@
   <ion-row>
     <ion-col size-md="8" offset-md="2">
       <div class="notes">
-        <ion-input type="text" placeholder="Agregar una nota"></ion-input>
-        <ion-button expand="block" color="primary">Guardar</ion-button>
-        <!-- Aquí podrían listarse las notas guardadas -->
+        <ion-input [(ngModel)]="newNote" type="text" placeholder="Agregar una nota"></ion-input>
+        <ion-button expand="block" color="primary" (click)="createNote()">Guardar</ion-button>
+        <!-- Aquí se listan las notas guardadas -->
         <p>Notas:</p>
         <ul>
-          <li>Ejemplo de nota 1</li>
-          <li>Ejemplo de nota 2</li>
+          <li *ngFor="let nota of notes">{{ nota.content }}
+            <!-- <ion-button color="danger" (click)="deleteNote(nota)">Eliminar</ion-button> -->
+          </li>
         </ul>
       </div>
     </ion-col>

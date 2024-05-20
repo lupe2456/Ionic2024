@@ -33,7 +33,11 @@ const routes: Routes = [
         loadChildren: () => import('./view-tasks/view-tasks.module').then( m => m.ViewTasksPageModule)
       },
     ],
+  },  {
+    path: 'directory',
+    loadChildren: () => import('./directory/directory.module').then( m => m.DirectoryPageModule)
   },
+
   
 ];
 

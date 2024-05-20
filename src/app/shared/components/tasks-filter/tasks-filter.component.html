@@ -1,0 +1,38 @@
+<app-header [isModal]="true" title="Ver tareas"></app-header>
+
+<ion-content class="content">
+  <ion-list *ngIf="!loading">
+    <ion-item-sliding class="product-item" *ngFor="let tarea of tasks">
+      <ion-item>
+        <ion-avatar slot="start">
+          <div class="circle" [ngStyle]="{'background-color': tarea.color}"></div>
+        </ion-avatar>
+        <ion-label>
+          <div class="name"> {{ tarea.title }} </div>
+          <div class="data">
+            <strong>Descripción: </strong> {{ tarea.description }} <br>
+            <strong>Fecha: </strong> {{ tarea.start_date }} <br>
+          </div>
+        </ion-label>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="loading">
+    <ion-item-sliding class="product-item" *ngFor="let tarea of [1,1,1,1,1,1,1]">
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <div>
+            <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+            <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+          </div>
+        </ion-label>
+      </ion-item>
+
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

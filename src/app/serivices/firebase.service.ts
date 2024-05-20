@@ -7,6 +7,8 @@ import { addDoc, collection, deleteDoc, doc, getDoc, getFirestore, setDoc, updat
 import { UtilsService } from './utils.service';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadString } from 'firebase/storage';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Tasks } from '../models/tasks.model';
 
 const {v4: uuidv4} = require('uuid');
 
@@ -54,10 +56,9 @@ export class FirebaseService {
     this.utilsService.routerlink('/auth');
   }
 
-  addDocument(path: any, data: any) { // 'users/id/empleados'
-    return addDoc(collection(getFirestore(), path), data); // add guarda los datos
-
-  }
+  addDocument(path: string, docId: string, data: any) {
+    return setDoc(doc(collection(getFirestore(), path), docId), data); // Utilizo setDoc para establecer el documento con un ID específico
+  }
 
   async updateImg(path: any, data_url: any){
     return uploadString(ref(getStorage(), path), data_url, 'data_url')
@@ -99,4 +100,15 @@ export class FirebaseService {
     return uuidv4();
   }
 
+
+  getUserTasks(userId: string): Observable<Tasks[]> {
+    return this.firestore.collection<Tasks>(`users/${userId}/tareas`).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Tasks;
+        data.id = a.payload.doc.id;
+        return data;
+      }))
+    );
+  }
+  
 }

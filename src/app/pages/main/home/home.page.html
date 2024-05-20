@@ -1,6 +1,12 @@
 <app-header [showMenu]="true" title="Inicio"></app-header>
 
 <ion-content>
+
+  <!-- Para que se refresque la pantalla de inicio con los nuevos cambios -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"> 
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-grid>
     <!-- Calendario -->
     <ion-row>
@@ -19,11 +25,14 @@
           <ion-segment-button value="tasks" routerLink="../view-tasks">Tareas
           </ion-segment-button>
 
+          <ion-segment-button value="directory" routerLink="../directory">Directorio
+          </ion-segment-button>
+
           <ion-segment-button value="notes" routerLink="../notes">Notas
           </ion-segment-button>
         </ion-segment>
 
-        <ion-datetime presentation="date" [highlightedDates]="highlightedDates">
+        <ion-datetime presentation="date" [highlightedDates]="highlightedDates" (ionChange)="onDateChange($event)">
         </ion-datetime>
 
       </ion-col>
@@ -32,6 +41,60 @@
     <ion-row>
       <ion-col size-md="8" offset-md="2">
         <h2>Colorimetría</h2>
+
+        <h5>Eventos académicos</h5>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #2ecc71"></div>
+            </ion-col>
+            <ion-col size="10">Reunión</ion-col>
+          </ion-row>
+        </div>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #ff9f43"></div>
+            </ion-col>
+            <ion-col size="10">Exámenes</ion-col>
+          </ion-row>
+        </div>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #9b59b6"></div>
+            </ion-col>
+            <ion-col size="10">Entregas finales</ion-col>
+          </ion-row>
+        </div>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #f1c40f"></div>
+            </ion-col>
+            <ion-col size="10">Suspensión</ion-col>
+          </ion-row>
+        </div>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #ff6b81"></div>
+            </ion-col>
+            <ion-col size="10">Visitas industriales</ion-col>
+          </ion-row>
+        </div>
+        <div>
+          <ion-row>
+            <ion-col size="2">
+              <div class="circle" style="background-color: #00b894"></div>
+            </ion-col>
+            <ion-col size="10">Eventos deportivos</ion-col>
+          </ion-row>
+        </div>
+
+
+        <br>
+        <h5>Fechas oficiales</h5>
         <div>
           <ion-row>
             <ion-col size="2">

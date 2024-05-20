@@ -1,6 +1,6 @@
 ion-card{
     gap: 100px;
-    padding: 8px 0;
+    padding: 6px 0;
     border-radius: 15px;
 }
 
@@ -11,3 +11,20 @@ ion-content{
 .admin {
     font-size: 13px;
 }
+
+.circle {
+    width: 40px; /* Tamaño del círculo */
+    height: 40px; /* Tamaño del círculo */
+    border-radius: 50%; /* Hace que el div sea un círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; /* Espacio entre el círculo y el contenido */
+}
+
+ion-avatar {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    margin-right: 10px; /* Espacio entre el avatar y el contenido */
+}
+  

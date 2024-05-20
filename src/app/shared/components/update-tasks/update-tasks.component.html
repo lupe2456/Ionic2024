@@ -27,7 +27,7 @@
 
         <ion-item>
           <ion-label>Todo el día</ion-label>
-          <ion-checkbox [formControl]="form1.controls.all_day" slot="end"></ion-checkbox>
+          <ion-checkbox [formControl]="form1.controls.all_day" slot="end" (ionChange)="toggleAllDay()"></ion-checkbox>
         </ion-item>
 
         <ion-row>
@@ -97,6 +97,12 @@
             <div class="circle" style="background-color: #00b894" (click)="selectColor('#00b894')"
               [ngClass]="{'selected': selectedColor === '#00b894'}"></div>
           </ion-col>
+          
+          <!-- Párrafo de Descripción -->
+          <ion-col size="12">
+            <p *ngIf="selectedColor" class="color-description">{{ getColorDescription(selectedColor) }}</p>
+          </ion-col>
+
         </ion-row>
       </ion-card>
 
