@@ -8,20 +8,78 @@
 </ion-header>
 
 <ion-content>
-  <!-- Notas -->
-  <ion-row>
-    <ion-col size-md="8" offset-md="2">
-      <div class="notes">
-        <ion-input [(ngModel)]="newNote" type="text" placeholder="Agregar una nota"></ion-input>
-        <ion-button expand="block" color="primary" (click)="createNote()">Guardar</ion-button>
-        <!-- Aquí se listan las notas guardadas -->
-        <p>Notas:</p>
-        <ul>
-          <li *ngFor="let nota of notes">{{ nota.content }}
-            <!-- <ion-button color="danger" (click)="deleteNote(nota)">Eliminar</ion-button> -->
-          </li>
-        </ul>
-      </div>
-    </ion-col>
-  </ion-row>
+  <!-- Para que se refresque la pantalla de inicio con los nuevos cambios -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <form [formGroup]="form1" (ngSubmit)="submit()" class="ion-padding ion-text-center" (keypress.enter)="submit()">
+
+    <!-- Notas -->
+
+    <ion-grid fixed>
+      <ion-item>
+        <ion-input labelPlacement="floating" label="Agregar una nota" type="text"
+          [formControl]="form1.controls.content"></ion-input>
+        <div class="validators" *ngIf="form1.controls.content.errors && form1.controls.content.touched">
+          <div *ngIf="form1.controls.content.errors?.['required']">Requerido</div>
+        </div>
+      </ion-item>
+
+      <ion-button expand="block" color="success" type="submit" mode="ios" [disabled]="form1.invalid">
+        Guardar
+      </ion-button>
+
+    </ion-grid>
+  </form>
+
+  <div class="notes">
+    <!-- Aquí se listan las notas guardadas -->
+    <p>Notas:</p>
+
+    <ion-list *ngIf="!loading">
+      <ion-item-sliding class="product-item" *ngFor="let nota of notes">
+        <ion-item>
+          <ion-label>
+            <div class="data">
+              {{ nota.content }} <br>
+            </div>
+          </ion-label>
+        </ion-item>
+
+        <ion-item-options>
+
+          <!-- eliminar  -->
+          <ion-item-option (click)="confirmDeleteNote(nota)" color="danger">
+            <ion-icon class="option-btn" name="trash-outline"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-list *ngIf="loading">
+      <ion-item-sliding class="product-item" *ngFor="let nota of [1,1,1,1,1,1,1]">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated style="width: 100%; height: 100%;"></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <div>
+              <ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text>
+              <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+            </div>
+          </ion-label>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+    <div class="empty" *ngIf="!loading && !notes.length">
+      <ion-icon name="diamond-outline"></ion-icon>
+      <h3>No hay notas disponibles</h3>
+    </div>
+
+  </div>
 </ion-content>

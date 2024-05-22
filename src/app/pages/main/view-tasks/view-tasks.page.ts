@@ -67,7 +67,8 @@ export class ViewTasksPage implements OnInit {
 
   async deleteTask(task: Tasks){
     let path = `users/${this.user().uid}/tareas/${task.id}`;
-
+    console.log(path);
+    
     const loading = await this.utilsService.loading();
     await loading.present();
 

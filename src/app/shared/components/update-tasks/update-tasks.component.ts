@@ -33,11 +33,11 @@ export class UpdateTaskComponent implements OnInit {
     title: new FormControl('', [Validators.required]),
     description: new FormControl(''),
     all_day: new FormControl('false'),
-    start_date: new FormControl(''), //, [Validators.required]
+    start_date: new FormControl('', [Validators.required]),
     start_time: new FormControl(''),
     end_date: new FormControl(''),
     end_time: new FormControl(''),
-    color: new FormControl(''), //, [Validators.required]
+    color: new FormControl('', [Validators.required]),
     url: new FormControl(''),
     notes: new FormControl(''),
   });
@@ -45,8 +45,6 @@ export class UpdateTaskComponent implements OnInit {
   ngOnInit() {
     this.initializeSelectedColor();
     this.user = this.utilsService.getLocalStorage('user');
-    /*  console.log('Valor de la tarea recibida: ');
-    console.log(this.task); */
 
     if (this.task) {
       this.form1.controls.id.setValue(this.task.id);
@@ -179,19 +177,21 @@ export class UpdateTaskComponent implements OnInit {
     if (this.form1.controls.all_day.value) {
       // Si se marca el checkbox all_day, establecer los valores predeterminados para la fecha y la hora
       const selectedStartDate = this.form1.controls.start_date.value;
-      const today = selectedStartDate ? selectedStartDate : new Date().toISOString().split('T')[0];
+      const today = selectedStartDate
+        ? selectedStartDate
+        : new Date().toISOString().split('T')[0];
       this.form1.patchValue({
         start_date: today,
         start_time: '00:00',
         end_date: today,
-        end_time: '23:59'
+        end_time: '23:59',
       });
     } else {
       // Si se desmarca el checkbox all_day, limpiar los valores de fecha y hora
       this.form1.patchValue({
         start_time: null,
         end_date: null,
-        end_time: null
+        end_time: null,
       });
     }
   }
@@ -225,8 +225,8 @@ export class UpdateTaskComponent implements OnInit {
       case '#00b894':
         return 'Eventos deportivos';
 
-    default:
-      return '';
+      default:
+        return '';
     }
   }
 }
